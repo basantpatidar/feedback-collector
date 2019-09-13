@@ -8,13 +8,15 @@ import reduxThunk from "redux-thunk";
 import App from "./components/App";
 import reducers from "./reducers";
 
+// Redux store and passed reducers as arguments.
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
+//wired Provider
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.querySelector("#root")
+  document.getElementById("root")
 );
 
 // console.log("STRIPE KEY IS", process.env.REACT_APP_STRIPE_KEY);
