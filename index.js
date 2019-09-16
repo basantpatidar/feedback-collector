@@ -8,12 +8,7 @@ require("./models/User");
 require("./models/Survey");
 require("./services/passport");
 
-//used Libraries
-//Passport
-//Mongoose
-//Express
-//Cookies-session
-//
+
 
 mongoose.connect(keys.mongoURI);
 
@@ -35,6 +30,7 @@ app.use(passport.session());
 //both these require statements return their respective app functions
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 //getting app ready for production environment
 if (process.env.NODE_ENV === "production") {
