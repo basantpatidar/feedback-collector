@@ -11,6 +11,14 @@ class Mailer extends helper.Mail {
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
     this.recipients = this.formatAddresses(recipients);
+
+    this.addContent(this.body);
+    this.addClicktracking();
+  }
+  formatAddresses(recipients) {
+    return recipients.map(({ email }) => {
+      return new helper.Email(email);
+    });
   }
 }
 module.exports = Mailer;
