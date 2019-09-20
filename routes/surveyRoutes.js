@@ -11,7 +11,7 @@ module.exports = app => {
   app.post("api/surveys", requireLogin, requireCredits, (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
-    const servey = new servey({
+    const survey = new Survey({
       title,
       subject,
       body,
@@ -26,5 +26,9 @@ module.exports = app => {
 
     //Mailer Configuration
     const mailer = new Mailer(survey, surveyTemplate(survey));
+    mailer.send();
   });
 };
+
+//const survey = { title: "my title", subject: "my subject", recipients: "basantpatidar33@gmail.com", body: "here is the body of this mail"};
+//axios.post("/api/surveys", survey);
