@@ -8,23 +8,23 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = mongoose.model("surveys");
 
 module.exports = app => {
-  app.post("api/surveys", requireLogin, requireCredits, (req, res) => {
+  app.post("/api/surveys", requireLogin, requireCredits, (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
-    const servey = new servey({
+    const survey = new Survey({
       title,
       subject,
       body,
-      recipients: recipients.split(",").map(email => {
-        return {
-          email: email.trim()
-        };
-      }),
+      recipients: recipients.split(",").map(email => ({ email })),
       _user: req.user.id,
       dateSent: Date.now()
     });
 
     //Mailer Configuration
     const mailer = new Mailer(survey, surveyTemplate(survey));
+    mailer.send();
   });
 };
+
+//const survey = { title: "my title", subject: "my subject", recipients: "basantpatidar33@gmail.com", body: "here is the body of this mail"};
+//axios.post("/api/surveys", survey);
