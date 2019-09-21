@@ -1,6 +1,6 @@
-const sendgrid = require("sendgrid");
+const sendgrid = require('sendgrid');
 const helper = sendgrid.mail;
-const keys = require("../config/keys");
+const keys = require('../config/keys');
 
 //class are also one type of object so here "Mailer" & "helper" class are a object
 class Mailer extends helper.Mail {
@@ -8,9 +8,9 @@ class Mailer extends helper.Mail {
     super();
 
     this.sgApi = sendgrid(keys.sendGridKey);
-    this.from_email = new helper.Email("no-reply@emaily.com");
+    this.from_email = new helper.Email('no-reply@emaily.com');
     this.subject = subject;
-    this.body = new helper.Content("text/html", content);
+    this.body = new helper.Content('text/html', content);
     this.recipients = this.formatAddresses(recipients);
 
     this.addContent(this.body);
@@ -40,12 +40,12 @@ class Mailer extends helper.Mail {
 
   async send() {
     const request = this.sgApi.emptyRequest({
-      method: "POST",
-      path: "/v3/mail/send",
+      method: 'POST',
+      path: '/v3/mail/send',
       body: this.toJSON()
     });
 
-    const response = this.sgApi.API(request);
+    const response = await this.sgApi.API(request);
     return response;
   }
 
