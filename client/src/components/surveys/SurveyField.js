@@ -3,9 +3,10 @@
 import React from 'react';
 
 //destructuring input from props object
-export default ({ input }) => {
+export default ({ input, label }) => {
   return (
     <div>
+      <label>{label}</label>
       <input {...input} />
     </div>
   );
