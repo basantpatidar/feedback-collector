@@ -2,6 +2,11 @@
 //label and text input
 import React from 'react';
 
-export default () => {
-  return <div> SurveyField</div>;
+//destructuring input from props object
+export default ({ input }) => {
+  return (
+    <div>
+      <input {...input} />
+    </div>
+  );
 };
