@@ -51,6 +51,13 @@ function validate(values) {
     errors.title = 'Please provide title';
   }
 
+  if (!values.subject) {
+    errors.subject = 'Please provide subject';
+  }
+  if (!values.body) {
+    errors.body = 'Please provide subject';
+  }
+
   return errors;
 }
 
