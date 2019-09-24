@@ -43,6 +43,18 @@ class SurveyForm extends React.Component {
     );
   }
 }
+
+function validate(values) {
+  const errors = {};
+
+  if (!values.title) {
+    errors.title = 'Please provide title';
+  }
+
+  return errors;
+}
+
 export default reduxForm({
-  form: 'SurveyForm'
+  validate,
+  form: 'surveyForm'
 })(SurveyForm);
