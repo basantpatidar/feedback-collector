@@ -1,6 +1,6 @@
 //SurveyNew is parent component to SurveyForm and SurveyFormReview
 import React from 'react';
-import SurveyForm from './surveyForm';
+import SurveyForm from './SurveyForm';
 
 class SurveyNew extends React.Component {
   render() {
