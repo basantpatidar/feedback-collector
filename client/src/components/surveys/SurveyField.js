@@ -3,13 +3,13 @@
 import React from 'react';
 
 //destructuring input from props object and nested destructuring for meta
-export default ({ input, label, meta: { error, touched } }) => {
+export default ({ input, label, meta: { error, touched, active } }) => {
   return (
     <div>
       <label>{label}</label>
       <input {...input} style={{ marginBottom: '5px' }} />
       <div className="red-text" style={{ marginBottom: '20px' }}>
-        {touched && error}
+        {!active && touched && error}
       </div>
     </div>
   );
