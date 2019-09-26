@@ -1,3 +1,4 @@
+//Survey Confirmation page
 import React from 'react';
 
 const SurveyReview = () => {
