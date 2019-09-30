@@ -43,6 +43,3 @@ module.exports = app => {
     }
   });
 };
-
-//const survey = { title: "my title", subject: "my subject", recipients: "basantpatidar33@gmail.com", body: "here is the body of this mail"};
-//axios.post("/api/surveys", survey);
