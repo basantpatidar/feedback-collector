@@ -11,7 +11,7 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
-  app.get('/api/surveys/thanks', (req, res) => {
+  app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('Thanks for feedback!');
   });
 
@@ -36,7 +36,8 @@ module.exports = app => {
           },
           {
             $inc: { [choice]: 1 },
-            $set: { 'recipients.$.resonded': true }
+            $set: { 'recipients.$.resonded': true },
+            lastResponded: new Date()
           }
         ).exec();
       })
