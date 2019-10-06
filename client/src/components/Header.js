@@ -40,7 +40,13 @@ class Header extends Component {
           >
             Feedback Collector
           </Link>
-          <ul className="right">{this.renderContent()}</ul>
+
+          <ul className="right">
+            <Link to="/surveys/" className="right">
+              Surveys
+            </Link>
+            {this.renderContent()}
+          </ul>
         </div>
       </nav>
     );
